@@ -3,25 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: #fff;
+  --background-rgb: #36393f;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground-rgb);
+  background: var(--background-rgb);
+  height: 100vh;
+}
+
+@layer components {
+  .msg {
+    @apply flex flex-row m-3;
+  }
+  .msg img {
+    @apply w-12;
+  }
+  .sidebar {
+    @apply flex items-start flex-col bg-zinc-800 space-y-2 p-2 w-fit h-[100vh];
+  }
+  .side-icon {
+    @apply bg-zinc-700 p-2 rounded-4xl hover:rounded-3xl transition-all duration-300;
+  }
+  .side-btn {
+    @apply text-[#3ba55c] hover:bg-[#3ba55c] hover:text-white;
+  }
+  .side-logo {
+    @apply text-white;
+  }
+  .split-line {
+    @apply border border-zinc-600 w-full;
+  }
+  .dialog {
+    @apply rounded-2xl text-center open:transition-all open:duration-300;
+  }
 }
