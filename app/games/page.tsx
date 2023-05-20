@@ -8,26 +8,31 @@ export default function Home() {
   return (
     <main className="w-full flex flex-row">
       <div className="bg-[#2f3136] w-[25rem]">
+        {/* server title */}
         <div className="flex flex-row items-center justify-between border-b border-[#27272a]">
-          <p className="p-3">게임 서버</p>
+          <p className="p-3">게임 서버</p> 
           <FaChevronDown className="mr-3" />
         </div>
+        {/* chanel title */}
         <div className="flex text-[#72767d] text-xs flex-row items-center">
           <FaChevronDown className="ml-3" />
           <p className="p-3 mr-3">채팅 채널</p>
         </div>
+        {/* chanel */}
         <div className="flex text-[#72767d] text-base flex-row items-center ml-4 mr-4 bg-[#40444b] rounded">
           <FaHashtag className="ml-3" />
           <p className="ml-1 pt-2 pb-2 mr-3 font-bold text-white">게임</p>
           <FaUserPlus className="ml-auto mr-3"></FaUserPlus>
         </div>
       </div>
+      {/* chating zone */}
       <div className="w-full h-full flex flex-col">
         <header className="flex flex-row items-center p-3">
           <FaHashtag></FaHashtag>
           <h1>게임</h1>
         </header>
         <div className="border-b-2 border-[#2f3136] w-full"></div>
+        {/* input box and title */}
         <footer className="mt-auto mb-5">
           <div className="rounded-full bg-[#4f545c] ml-2 mb-2 p-5 w-fit">
             <FaHashtag size="3rem"></FaHashtag>

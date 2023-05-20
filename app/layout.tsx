@@ -25,6 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-row">
           <Sidebar />
+          {/* ^ discord-like sidebar */}
           {children}
         </div>
       </body>
