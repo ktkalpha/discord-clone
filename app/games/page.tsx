@@ -49,7 +49,7 @@ export default function Home() {
             #게임에 오신 것을 환영합니다!
           </h1>
           {/* msg add here */}
-          {textlist.map((data)=><Msg nick="User" text={data}></Msg>)}
+          {textlist.map((data, index)=><Msg nick="User" key={index} text={data}></Msg>)}
           <div className="mt-3 mb-3 border-b-2 border-[#4d5159] w-full"></div>
           <div className="bg-[#40444b] rounded-lg p-3 flex space-x-5 items-center">
             <div className="rounded-full bg-[#4f545c] p-2 w-fit">
