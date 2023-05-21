@@ -1,10 +1,18 @@
+"use client";
 import "../globals.css";
-import ava from "./avatar.png";
-import Image from "next/image";
-import { FaHashtag, FaPlus, FaChevronDown, FaUserPlus } from "react-icons/fa";
+import {
+  FaHashtag,
+  FaPlus,
+  FaChevronDown,
+  FaUserPlus,
+  FaPaperPlane,
+} from "react-icons/fa";
+import { identicon } from "minidenticons";
+import { useMemo, useState } from "react";
 
 export default function Home() {
-  // console.log(ava);
+  const [text, setText] = useState("");
+  const [textlist, setTextlist] = useState<string[]>(["안녕하세요"]);
   return (
     <main className="w-full flex flex-row">
       <div className="bg-[#2f3136] w-[25rem]">
@@ -41,7 +49,7 @@ export default function Home() {
             #게임에 오신 것을 환영합니다!
           </h1>
           {/* msg add here */}
-          <Msg nick="Anon" text="hello" profile={ava}></Msg>
+          {textlist.map((data)=><Msg nick="User" text={data}></Msg>)}
           <div className="mt-3 mb-3 border-b-2 border-[#4d5159] w-full"></div>
           <div className="bg-[#40444b] rounded-lg p-3 flex space-x-5 items-center">
             <div className="rounded-full bg-[#4f545c] p-2 w-fit">
@@ -50,7 +58,18 @@ export default function Home() {
             <input
               className="bg-[#40444b] w-full h-full focus:outline-none"
               placeholder="#게임에 메시지 보내기"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
             ></input>
+            <button
+              onClick={() => {
+                setTextlist([...textlist, text]);
+                setText("");
+              }}
+              className="rounded-full bg-[#4f545c] p-2 w-fit"
+            >
+              <FaPaperPlane size="1rem"></FaPaperPlane>
+            </button>
           </div>
         </footer>
       </div>
@@ -58,12 +77,27 @@ export default function Home() {
   );
 }
 
-const Msg = ({ nick, text, profile }: any) => (
+const Msg = ({ nick, text }: any) => (
   <div className="msg">
-    <Image alt="profile image" src={profile}></Image>
+    <IdenticonImg
+      className="rounded-full border border-slate-600"
+      username={nick}
+      width="3rem"
+      height="3rem"
+    />
     <div className="ml-2 flex flex-col">
       <p className="font-bold ">{nick}</p>
       <p>{text}</p>
     </div>
   </div>
 );
+
+const IdenticonImg = ({ username, saturation, lightness, ...props }: any) => {
+  const svgURI = useMemo(
+    () =>
+      "data:image/svg+xml;utf8," +
+      encodeURIComponent(identicon(username, saturation, lightness)),
+    [username, saturation, lightness]
+  );
+  return <img src={svgURI} alt={username} {...props} />;
+};

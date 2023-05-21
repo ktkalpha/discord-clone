@@ -4,7 +4,6 @@ import {
   FaGamepad,
   FaGithub,
   FaPlus,
-  FaTimes,
   FaDiscord,
 } from "react-icons/fa";
 
